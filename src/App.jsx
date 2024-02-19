@@ -46,6 +46,13 @@ export default function App() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(contacts));
   }, [contacts]);
 
+  const filteredContacts =
+    search.trim() === ''
+      ? contacts.slice()
+      : contacts.filter(contact =>
+          contact.name.toLowerCase().includes(search.toLowerCase())
+        );
+
   return (
     <div>
       <h1>Phonebook</h1>
@@ -54,9 +61,8 @@ export default function App() {
         Find contacts by name
       </SearchBox>
       <ContactList
-        contacts={contacts}
+        contacts={filteredContacts}
         onDeleteContact={handleDeleteContact}
-        search={search}
       />
     </div>
   );

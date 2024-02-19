@@ -23,7 +23,6 @@ export default function ContactForm({ onAddContact }) {
   });
 
   function handleSubmit(values, actions) {
-    console.log(values);
     onAddContact({
       name: values.name.trim(),
       number: values.number.trim(),
